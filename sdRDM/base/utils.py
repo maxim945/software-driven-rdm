@@ -194,7 +194,7 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
                 # If it is just a single sub-object we can reference
                 # the FK in this table
                 attributes[f"{name}"] = Column(
-                    Integer, ForeignKey(f"{name}")
+                    Integer, ForeignKey(f"{name.lower()}.object_id")
                 )
                 attributes[name] = relationship(
                     field.type_.__name__,
