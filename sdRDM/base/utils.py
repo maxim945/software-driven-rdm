@@ -1,10 +1,10 @@
-import re
+#import re
 
-from datetime import date, datetime
-from typing import Any, get_origin, Dict, List, Optional
-from inspect import Signature, Parameter
-from pydantic import Field, create_model
-from sqlalchemy.orm import relationship
+#from datetime import date, datetime
+#from typing import Any, get_origin, Dict, List, Optional
+#from inspect import Signature, Parameter
+#from pydantic import Field, create_model
+#from sqlalchemy.orm import relationship
 from sqlalchemy import (
     Column,
     Date,
@@ -15,9 +15,9 @@ from sqlalchemy import (
     BigInteger,
     ForeignKey,
 )
-from sdRDM.base.importemodules import ImportedModules
+#from sdRDM.base.importemodules import ImportedModules
 
-SQL_DATATYPES = {
+#SQL_DATATYPES = {
     str: String,
     int: Integer,
     float: Float,
