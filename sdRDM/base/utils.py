@@ -165,7 +165,7 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
     if foreign_key is None:
         # If no foreign key is given, pass the current tablename
         # reference to the object_id attribute
-        foreign_key = f"{tablename}"
+        foreign_key = f"{tablename}.object_id"
         #foreign_key = f"{tablename}.object_id"
     else:
         # If a foreign key is given, integrate this one into the ORM
