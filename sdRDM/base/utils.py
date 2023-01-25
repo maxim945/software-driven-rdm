@@ -34,12 +34,12 @@ class IDGenerator:
         self.__name__ = "IDGenerator"
 
     def __call__(self):
-        #return self.generate_id()
+        return self.generate_id()
 
     def generate_id(self):
         id = re.sub(r"\[?INDEX\]?[+|*|?]?", str(self.index), self.pattern)
         self.index += 1
-        #return id
+        return id
 
 
 def generate_model(
@@ -171,10 +171,10 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
         # This in general applies to one-to-many relationships
         attributes[foreign_key.split(".")[0]] = Column(Integer, ForeignKey(foreign_key))
 
-    #if backref:
+    if backref:
         # If a backref is given, then there is a one-to-one relations
         # which includes a back-population from both tables
-        #attributes[backref.lower()] = relationship(backref, back_populates=tablename)
+        attributes[backref.lower()] = relationship(backref, back_populates=tablename)
 
     for name, field in obj.__fields__.items():
         inner_dtype = field.type_
@@ -194,7 +194,7 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
                 # If it is just a single sub-object we can reference
                 # the FK in this table
                 attributes[f"{name}"] = Column(
-                    Integer, ForeignKey(f"{name.lower()}.object_id")
+                    Integer, ForeignKey(f"{name}")
                 )
                 attributes[name] = relationship(
                     field.type_.__name__,
