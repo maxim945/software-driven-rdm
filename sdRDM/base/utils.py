@@ -34,7 +34,7 @@ class IDGenerator:
         self.__name__ = "IDGenerator"
 
     def __call__(self):
-        return self.generate_id()
+        #return self.generate_id()
 
     def generate_id(self):
         id = re.sub(r"\[?INDEX\]?[+|*|?]?", str(self.index), self.pattern)
