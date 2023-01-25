@@ -166,6 +166,7 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
         # If no foreign key is given, pass the current tablename
         # reference to the object_id attribute
         foreign_key = f"{tablename}.object_id"
+        #foreign_key = f"{tablename}.object_id"
     else:
         # If a foreign key is given, integrate this one into the ORM
         # This in general applies to one-to-many relationships
@@ -194,7 +195,8 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
                 # If it is just a single sub-object we can reference
                 # the FK in this table
                 attributes[f"{name}"] = Column(
-                    Integer, ForeignKey(f"{name.lower()}.object_id")
+                    Integer, ForeignKey(f"{name}")
+                    #Integer, ForeignKey(f"{name.lower()}.object_id")
                 )
                 attributes[name] = relationship(
                     field.type_.__name__,
@@ -223,7 +225,8 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
                             primary_key=True,
                         ),
                         tablename: Column(
-                            Integer, ForeignKey(f"{tablename}.object_id")
+                            Integer, ForeignKey(f"{tablename}")
+                            #Integer, ForeignKey(f"{tablename}.object_id")
                         ),
                         name: Column(
                             SQL_DATATYPES[inner_dtype],
