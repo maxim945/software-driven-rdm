@@ -171,10 +171,10 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
         # This in general applies to one-to-many relationships
         attributes[foreign_key.split(".")[0]] = Column(Integer, ForeignKey(foreign_key))
 
-    if backref:
+    #if backref:
         # If a backref is given, then there is a one-to-one relations
         # which includes a back-population from both tables
-        attributes[backref.lower()] = relationship(backref, back_populates=tablename)
+        #attributes[backref.lower()] = relationship(backref, back_populates=tablename)
 
     for name, field in obj.__fields__.items():
         inner_dtype = field.type_
