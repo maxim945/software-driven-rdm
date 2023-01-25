@@ -129,7 +129,7 @@ def forge_signature(cls):
     return cls
 
 
-#def _construct_signature(cls):
+def _construct_signature(cls):
     """Helper function to extract parameters"""
 
     parameters = []
@@ -151,7 +151,7 @@ def forge_signature(cls):
     return parameters
 
 
-#def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
+def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
     """Converts a Pydantic object to an SQL table"""
 
     tablename = tablename if tablename is not None else obj.__name__
