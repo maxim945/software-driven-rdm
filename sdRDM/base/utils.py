@@ -39,7 +39,7 @@ class IDGenerator:
     def generate_id(self):
         id = re.sub(r"\[?INDEX\]?[+|*|?]?", str(self.index), self.pattern)
         self.index += 1
-        #return id
+        return id
 
 
 def generate_model(
@@ -166,15 +166,16 @@ def object_to_orm(obj, base, foreign_key=None, backref=None, tablename=None):
         # If no foreign key is given, pass the current tablename
         # reference to the object_id attribute
         foreign_key = f"{tablename}.object_id"
+        #foreign_key = f"{tablename}.object_id"
     else:
         # If a foreign key is given, integrate this one into the ORM
         # This in general applies to one-to-many relationships
         attributes[foreign_key.split(".")[0]] = Column(Integer, ForeignKey(foreign_key))
 
-    if backref:
+    #if backref:
         # If a backref is given, then there is a one-to-one relations
         # which includes a back-population from both tables
-        attributes[backref.lower()] = relationship(backref, back_populates=tablename)
+        #attributes[backref.lower()] = relationship(backref, back_populates=tablename)
 
     for name, field in obj.__fields__.items():
         inner_dtype = field.type_
